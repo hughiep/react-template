@@ -1,11 +1,11 @@
-import "./App.css";
+import './App.css'
 
-import { WagmiProvider } from "wagmi";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Wallet from "~/modules/wallet";
-import { config } from "~/modules/shared/lib/wagmi";
+import { WagmiProvider } from 'wagmi'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Wallet from '~/modules/wallet'
+import { config } from '~/modules/shared/lib/wagmi'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Wallet />
       </QueryClientProvider>
     </WagmiProvider>
-  );
+  )
 }
 
-export default App;
+export default App
