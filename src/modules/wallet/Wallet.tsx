@@ -5,13 +5,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "~/modules/common/componenets/ui/dialog";
-import { Button } from "~/modules/common/componenets/ui/button";
-import { useConnect } from "wagmi";
-import { injected, walletConnect } from "wagmi/connectors";
+} from '~/modules/shared/componenets/ui/dialog'
+import { Button } from '~/modules/shared/componenets/ui/button'
+import { useConnect } from 'wagmi'
+import { injected, walletConnect } from 'wagmi/connectors'
 
 export default function Wallet() {
-  const { connect } = useConnect();
+  const { connect } = useConnect()
 
   return (
     <Dialog>
@@ -27,7 +27,7 @@ export default function Wallet() {
                 <Button
                   variant="ghost"
                   onClick={() =>
-                    connect({ connector: injected({ target: "metaMask" }) })
+                    connect({ connector: injected({ target: 'metaMask' }) })
                   }
                 >
                   MetaMask
@@ -53,5 +53,5 @@ export default function Wallet() {
         </DialogHeader>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

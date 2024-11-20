@@ -1,0 +1,7 @@
+
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+    - "3000:80" # map 80 in container => 3000 in local
