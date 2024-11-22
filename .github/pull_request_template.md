@@ -6,13 +6,13 @@ Screenshots (if appropriate)
 
 Make sure the following is done before review:
 
-Git
+[ ] Git
 
-- [ ] Commits, PR format; ex: `fix(JIRA-123): shor description of the problem`
-- [ ] Branch name; ex: `JIRA-123-short-description`
+- Commits, PR format; ex: `fix(JIRA-123): shor description of the problem`
+- Branch name; ex: `JIRA-123-short-description`
 
-Coding
+[ ] Coding
 
-- [ ] File and folder's name is kebab-case
-- [ ] Following the coding standards and best practices
-- [ ] Ultilities functions and constants are documented
+- File and folder's name is kebab-case
+- Following the coding standards and best practices
+- Ultilities functions and constants are documented
