@@ -1,4 +1,4 @@
-import './App.css'
+import './app.css'
 
 import { WagmiProvider } from 'wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
