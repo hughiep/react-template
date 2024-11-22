@@ -4,14 +4,19 @@
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.js",
+    "config": "tailwind.config.ts",
     "css": "src/app.css",
     "baseColor": "slate",
     "cssVariables": true,
-    "prefix": ""
+    "prefix": "",
+    "rsc": false,
+    "tsx": true
   },
   "aliases": {
-    "components": "~/modules/common/componenets/",
-    "utils": "~/modules/common/lib/utils"
+    "components": "~/modules/shared/components/",
+    "utils": "~/modules/shared/utils",
+    "hooks": "~/modules/shared/hooks",
+    "lib": "~/modules/shared/lib",
+    "ui": "~/modules/shared/components/ui"
   }
 }
