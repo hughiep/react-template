@@ -2,5 +2,14 @@
  * JWT token key
  */
 
-export const ACCESS_TOKEN_KEY = 'access-token'
-export const REFRESH_TOKEN_KEY = 'refresh-token'
+const ACCESS_TOKEN = 'access-token'
+const REFRESH_TOKEN = 'refresh-token'
+
+const auth = {
+  acessToken: ACCESS_TOKEN,
+  refreshToken: REFRESH_TOKEN,
+}
+
+export const storageKey = {
+  auth,
+}
