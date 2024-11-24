@@ -10,6 +10,6 @@ const auth = {
   refreshToken: REFRESH_TOKEN,
 }
 
-export const storageKey = {
+export const storageKeys = {
   auth,
 }

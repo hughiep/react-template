@@ -1,12 +1,12 @@
-import { storageKey } from '../constants/storage'
+import { storageKeys } from '../constants/storage'
 
 export const getAccessToken = () =>
-  window.localStorage.getItem(storageKey.auth.acessToken)
+  window.localStorage.getItem(storageKeys.auth.acessToken)
 export const getRefreshToken = () =>
-  window.localStorage.getItem(storageKey.auth.refreshToken)
+  window.localStorage.getItem(storageKeys.auth.refreshToken)
 
 export const setAccessToken = (accessToken: string) =>
-  window.localStorage.set(storageKey.auth.acessToken, accessToken)
+  window.localStorage.set(storageKeys.auth.acessToken, accessToken)
 
 export const setRefreshToken = (refreshToken: string) =>
-  window.localStorage.set(storageKey.auth.refreshToken, refreshToken)
+  window.localStorage.set(storageKeys.auth.refreshToken, refreshToken)
