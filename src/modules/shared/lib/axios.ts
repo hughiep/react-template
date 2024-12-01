@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios'
 import {
   getAccessToken,
@@ -20,7 +21,7 @@ let isRefreshing = false
 let lockedRequestsQueued: {
   request: any
   resolve: (value: any) => void
-  reject: (reason?: any) => void
+  reject: (reason?: unknown) => void
 }[] = []
 
 /**

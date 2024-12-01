@@ -1,3 +1,5 @@
+import { useConnect } from 'wagmi'
+import { injected, walletConnect } from 'wagmi/connectors'
 import {
   Dialog,
   DialogContent,
@@ -7,8 +9,6 @@ import {
   DialogTrigger,
 } from '~/modules/shared/componenets/ui/dialog'
 import { Button } from '~/modules/shared/componenets/ui/button'
-import { useConnect } from 'wagmi'
-import { injected, walletConnect } from 'wagmi/connectors'
 
 export default function Wallet() {
   const { connect } = useConnect()
