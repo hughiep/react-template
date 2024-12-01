@@ -22,4 +22,7 @@ dist-ssr
 *.sw?
 
 .env
-.env.local
+.env.
+
+# React router
+.react-router

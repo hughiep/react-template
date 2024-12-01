@@ -13,9 +13,11 @@
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
-    "type-check": "tsc --noEmit"
+    "typegen": "react-router typegen && tsc",
+    "type-check": "typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@loadable/component": "^5.16.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@tanstack/react-query": "^5.25.0",
@@ -25,6 +27,8 @@
     "lucide-react": "^0.350.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router": "^6.28.0",
+    "react-router-dom": "^6.28.0",
     "socket.io-client": "^4.8.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
@@ -35,6 +39,7 @@
     "@eslint/compat": "^1.2.3",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.16.0",
+    "@types/loadable__component": "^5.13.9",
     "@types/node": "^20.11.25",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",

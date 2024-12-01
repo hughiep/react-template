@@ -26,7 +26,6 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  allConfigs: eslint.configs,
 })
 
 /**
@@ -44,11 +43,27 @@ const jsxA11yConfig = {
   },
 }
 
+/**
+ * Typescript eslint
+ */
+const tsEslintConfig = tsEslint.config(
+  eslint.configs.recommended,
+  tsEslint.configs.recommended,
+  {
+    rules: {
+      '@typescript-eslint/consistent-type-imports': [
+        'warn',
+        { prefer: 'type-imports' },
+      ],
+    },
+  },
+)
+
 const config = [
   {
     ignores: ['**/dist', '**/node_modules'],
   },
-  ...tsEslint.config(eslint.configs.recommended, tsEslint.configs.recommended),
+  ...tsEslintConfig,
   prettierPlugin,
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat['jsx-runtime'],

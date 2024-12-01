@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
     assetsInclude: ['./src/assets/**/*'],
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src'),
+        '@': path.resolve(__dirname, './src'),
       },
     },
   }

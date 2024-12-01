@@ -7,8 +7,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '~/modules/shared/componenets/ui/dialog'
-import { Button } from '~/modules/shared/componenets/ui/button'
+} from '@/modules/shared/componenets/ui/dialog'
+import { Button } from '@/modules/shared/componenets/ui/button'
 
 export default function Wallet() {
   const { connect } = useConnect()
