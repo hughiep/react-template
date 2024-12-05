@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "packageManager": "pnpm@9.14.1^",
   "engines": {
-    "node": ">=20"
+    "node": ">=22",
+    "pnpm": ">=9"
   },
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,7 @@
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "typegen": "react-router typegen && tsc",
-    "type-check": "typegen && tsc --noEmit"
+    "typecheck": "typegen && tsc --noEmit"
   },
   "dependencies": {
     "@loadable/component": "^5.16.4",

@@ -2,10 +2,15 @@
 
 ## Development
 
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en/download/) (v22.x or newer)
+- [pnpm](https://pnpm.io/installation) (v9.x or newer)
+
 ### Setup environment variables
 
 ```bash
-cp .env.example .env
+cp .env.template .env
 ```
 
 Update value for each key in `.env` file.
