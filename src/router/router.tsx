@@ -1,22 +1,45 @@
 import {
   createBrowserRouter,
+  createRoutesFromElements,
   Navigate,
   Outlet,
   Route,
-  Routes,
 } from 'react-router'
-import { BrowserRouter, RouterProvider } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
+import { useQueryClient, type QueryClient } from '@tanstack/react-query'
+import { jwtMeMock } from '../../.mock/auth'
 import { LoginPage } from './pages'
 import NotFoundPage from './not-found'
-import { RootBoundary } from './error-boundary'
+import ErrorBoundary from './error-boundary'
+
+export const contactDetailQuery = () => ({
+  queryKey: ['me'],
+  queryFn: async () => jwtMeMock(),
+})
+
+const loader = (queryClient: QueryClient) => async () => {
+  const query = contactDetailQuery() // ⬇️ return data or fetch it
+
+  const data = await queryClient.fetchQuery(query)
+  return data
+}
 
 export const Router = () => {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <PrivateRoute />,
-    },
-  ])
+  const queryClient = useQueryClient()
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route errorElement={<ErrorBoundary />}>
+        <Route path="/" element={<PrivateRoute />} />
+        <Route
+          path="/login"
+          element={<LoginPage />}
+          loader={loader(queryClient)}
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>,
+    ),
+  )
 
   return <RouterProvider router={router} />
 }
