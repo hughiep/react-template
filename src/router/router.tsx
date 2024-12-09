@@ -1,25 +1,24 @@
-import { Navigate, Outlet, Route, Routes } from 'react-router'
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from 'react-router'
+import { BrowserRouter, RouterProvider } from 'react-router-dom'
 import { LoginPage } from './pages'
+import NotFoundPage from './not-found'
 import { RootBoundary } from './error-boundary'
-import { BrowserRouter } from 'react-router-dom'
 
 export const Router = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" errorElement={<RootBoundary />}>
-          <Route element={<PrivateRoute />}>
-            <Route path="/" element={<div>home</div>} />
-          </Route>
-          <Route path="/login" element={<LoginPage />} />
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <PrivateRoute />,
+    },
+  ])
 
-          {/**
-           * Add more routes here
-           */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
+  return <RouterProvider router={router} />
 }
 
 const PrivateRoute = () => {
