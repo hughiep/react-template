@@ -31,7 +31,7 @@ export const jwtMockRefresh = async () => {
  * JWT get me mock promise
  */
 
-export const jwtMeMock = async () => {
+export const getMe = async () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({

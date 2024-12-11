@@ -7,16 +7,20 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/modules/shared/componenets/ui/dialog'
-import { Button } from '@/modules/shared/componenets/ui/button'
+} from '@shared/componenets/ui/dialog'
+import { Button } from '@shared/componenets/ui/button'
+import { Link } from 'react-router'
 
-export default function Wallet() {
+export default function ConnectWalletPage() {
   const { connect } = useConnect()
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost">Connect Wallet</Button>
+        <div>
+          <Button variant="ghost">Connect Wallet</Button>
+          <Link to="/login">Login</Link>
+        </div>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@shared/*": ["./src/modules/shared/*"],
+      "@auth": ["./src/modules/auth/index"],
+      "@auth/*": ["./src/modules/auth/*"],
+      "@wallet/*": ["./src/modules/wallet/*"],
+      "@wallet": ["./src/modules/wallet/index"],
       "@/*": ["./src/*"]
     },
     "rootDirs": [".", "./.react-router/types"],
@@ -25,6 +30,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", ".react-router/types/**/*"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
