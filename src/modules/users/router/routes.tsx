@@ -2,11 +2,12 @@
  * Users module routes
  */
 
+import type { RouteObject } from 'react-router'
+
 import CreateUser from '~/modules/users/create/CreateUser'
 import ListUser from '~/modules/users/list/ListUser'
-import { registerModuleRoutes } from '~/router/register'
 
-export const usersRoutes = registerModuleRoutes([
+export const usersRoutes: RouteObject[] = [
   {
     path: '/users',
     element: <ListUser />,
@@ -15,4 +16,4 @@ export const usersRoutes = registerModuleRoutes([
     path: '/users/create',
     element: <CreateUser />,
   },
-])
+]
