@@ -1,33 +1,33 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-} from 'react-router'
-import { RouterProvider } from 'react-router-dom'
-import { useQueryClient } from '@tanstack/react-query'
-import { loginPageLoaders } from '@auth/loaders'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import type { RouteObject } from 'react-router-dom'
 
-import RootLayout from './root-layout'
-import NotFoundPage from './not-found'
-import ErrorBoundary from './error-boundary'
+import RootLayout from '@/shared/layouts/root'
+
+import { moduleRoutes } from './routes'
 import PrivateRoute from './private-route'
+import NotFoundPage from './not-found'
+import ErrorBoundary from './error'
 
 export const Router = () => {
-  const queryClient = useQueryClient()
+  const appRoutes: RouteObject[] = [
+    {
+      path: '/',
+      element: <RootLayout />,
+      errorElement: <ErrorBoundary />,
+      children: [
+        {
+          path: '/',
+          element: <PrivateRoute />,
+        },
+        ...moduleRoutes,
+      ],
+    },
+    {
+      path: '*',
+      element: <NotFoundPage />,
+    },
+  ]
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route element={<RootLayout />} errorElement={<ErrorBoundary />}>
-        <Route path="/" element={<PrivateRoute />} />
-        <Route
-          path="/login"
-          lazy={() => import('@auth')}
-          loader={loginPageLoaders(queryClient)}
-        />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>,
-    ),
-  )
-
+  const router = createBrowserRouter(appRoutes)
   return <RouterProvider router={router} />
 }

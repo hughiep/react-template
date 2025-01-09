@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type AxiosRequestConfig } from 'axios'
+
 import { axiosClient } from '../lib/axios'
 
 const get = async <T>(

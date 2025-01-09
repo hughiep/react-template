@@ -1,7 +1,7 @@
 {
   "name": "react-web3-template",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "engines": {
     "node": ">=20",
@@ -12,9 +12,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "lint:fix": "eslint . --fix",
     "typegen": "react-router typegen && tsc",
-    "typecheck": "typegen && tsc --noEmit"
+    "typecheck": "typegen && tsc --noEmit",
+    "gen:module": "pnpm run gen:module --filter @/auth"
   },
   "dependencies": {
     "@loadable/component": "^5.16.4",

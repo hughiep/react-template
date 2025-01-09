@@ -13,10 +13,10 @@
     "tsx": true
   },
   "aliases": {
-    "components": "@shared/components/",
-    "utils": "@shared/utils",
-    "hooks": "@shared/hooks",
-    "lib": "@shared/lib",
-    "ui": "@shared/components/ui"
+    "components": "@/shared/components/",
+    "utils": "@/shared/utils",
+    "hooks": "@/shared/hooks",
+    "lib": "@/shared/lib",
+    "ui": "@/shared/components/ui"
   }
 }

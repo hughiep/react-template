@@ -1,2 +1,2 @@
-export { default as Component } from './login'
-export { loginPageLoaders } from './loaders'
+export { authRoutes } from './router/routes'
+export { authPaths } from './router/paths'

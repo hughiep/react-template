@@ -1,14 +1,14 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+
 import eslint from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat'
 import globals from 'globals'
-import tsParser from '@typescript-eslint/parser'
-
 /**
  * Plugins
  */
+import tsParser from '@typescript-eslint/parser'
 import tsEslint from 'typescript-eslint'
 import reactPlugin from 'eslint-plugin-react'
 import reactRefreshPlugin from 'eslint-plugin-react-refresh'
@@ -110,7 +110,27 @@ const config = [
       'react/prop-types': 0,
 
       'import/no-unresolved': 0, // Handled by TypeScript compiler
-      'import/order': 1,
+      'import/order': [
+        'warn',
+        {
+          pathGroups: [
+            {
+              pattern: '@/**',
+              group: 'external',
+              position: 'after',
+            },
+          ],
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          'newlines-between': 'always',
+        },
+      ],
       'import/newline-after-import': 1,
       'import/no-anonymous-default-export': 1,
     },

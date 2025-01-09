@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
     "paths": {
-      "@assets/*": ["./src/assets/*"],
-      "@shared/*": ["./src/modules/shared/*"],
-      "@auth": ["./src/modules/auth/index"],
-      "@auth/*": ["./src/modules/auth/*"],
-      "@wallet/*": ["./src/modules/wallet/*"],
-      "@wallet": ["./src/modules/wallet/index"],
-      "@/*": ["./src/*"]
+      "@/assets/*": ["./src/assets/*"],
+      "@/shared/*": ["./src/modules/shared/*"],
+      "@/auth": ["./src/modules/auth/index"],
+      "@/auth/*": ["./src/modules/auth/*"],
+      "@/wallet/*": ["./src/modules/wallet/*"],
+      "@/wallet": ["./src/modules/wallet/index"],
+      "~/*": ["./src/*"]
     },
     "rootDirs": [".", "./.react-router/types"],
     "target": "ES2020",

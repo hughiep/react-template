@@ -1,6 +1,7 @@
 import './app.css'
 
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 import { QueryProvider } from './modules/shared/providers/query'
 import { Web3Provider } from './modules/shared/providers/web3'
 import { Router } from './router'

@@ -1,7 +1,8 @@
-import { getMeQuery } from '@auth/services'
 import { useQuery } from '@tanstack/react-query'
 
-export default function LoginPage() {
+import { getMeQuery } from '@/auth/services/services'
+
+export default function Login() {
   const { data: me } = useQuery(getMeQuery())
 
   return (

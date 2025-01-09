@@ -1,5 +1,7 @@
 import { useConnect } from 'wagmi'
 import { injected, walletConnect } from 'wagmi/connectors'
+import { Link } from 'react-router'
+
 import {
   Dialog,
   DialogContent,
@@ -7,9 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@shared/componenets/ui/dialog'
-import { Button } from '@shared/componenets/ui/button'
-import { Link } from 'react-router'
+} from '@/shared/components/ui/dialog'
+import { Button } from '@/shared/components/ui/button'
 
 export default function ConnectWalletPage() {
   const { connect } = useConnect()
