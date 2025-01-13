@@ -5,7 +5,7 @@
 
 import { useState, useEffect } from 'react'
 
-import { cn } from '@/shared/lib/tailwind-cn'
+import { cn } from '@/shared/lib/classnames'
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   fallback?: string

@@ -1,4 +1,4 @@
-import { storageKeys } from '../../shared/constants/storage'
+import { storageKeys } from '../constants/storage'
 
 export const getAccessToken = () =>
   window.localStorage.getItem(storageKeys.auth.acessToken)
