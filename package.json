@@ -13,8 +13,7 @@
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --fix",
-    "typegen": "react-router typegen && tsc",
-    "typecheck": "typegen && tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "gen:module": "pnpm run gen:module --filter @/auth"
   },
   "dependencies": {
