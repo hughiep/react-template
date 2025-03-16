@@ -4,8 +4,8 @@
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/) (v20.x or newer)
-- [pnpm](https://pnpm.io/installation) (v9.x or newer)
+- [Node.js](https://nodejs.org/en/download/) (v22.x or newer)
+- [pnpm](https://pnpm.io/installation) (v10.x or newer)
 
 ### Setup environment variables
 

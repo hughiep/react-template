@@ -11,7 +11,7 @@ function App() {
   return (
     <QueryProvider>
       <Web3Provider>
-        <LoadingBarContainer props={{ color: 'blue' }}>
+        <LoadingBarContainer>
           <Router />
         </LoadingBarContainer>
       </Web3Provider>

@@ -1,8 +1,9 @@
 import type React from 'react'
 
-import * as svgIcons from '@/assets/icons'
+import * as icons from '@/assets/icons/svg'
 
-type SVGIconName = keyof typeof svgIcons
+type SVGIconName = keyof typeof icons
+
 interface Props extends React.SVGProps<SVGElement> {
   name: SVGIconName
   size?: number | `${number}`
@@ -10,9 +11,9 @@ interface Props extends React.SVGProps<SVGElement> {
 }
 
 export default function SvgIcon(props: Props) {
-  const { name, size, width = 24, height = 24 } = props
+  const { name, size, width = 24, height = 24, ...rest } = props
 
-  const Comp = svgIcons[name as SVGIconName] as React.FC<
+  const Comp = icons[name as SVGIconName] as React.FC<
     React.SVGProps<SVGElement>
   >
 
@@ -22,7 +23,7 @@ export default function SvgIcon(props: Props) {
       role="img"
       height={size ?? height}
       width={size ?? width}
-      {...props}
+      {...rest}
     />
   )
 }
