@@ -50,40 +50,6 @@ const tsEslintConfig = tsEslint.config(
   eslint.configs.recommended,
   tsEslint.configs.recommended,
   {
-    rules: {
-      '@typescript-eslint/consistent-type-imports': [
-        'warn',
-        { prefer: 'type-imports' },
-      ],
-    },
-  },
-)
-
-const config = [
-  {
-    ignores: ['**/dist', '**/node_modules'],
-  },
-  ...tsEslintConfig,
-  prettierPlugin,
-  reactPlugin.configs.flat.recommended,
-  reactPlugin.configs.flat['jsx-runtime'],
-  promisePlugin.configs['flat/recommended'],
-  jsxA11yConfig,
-
-  // Uncompatible with flat configs
-  ...fixupConfigRules(
-    compat.extends(
-      'plugin:import/recommended',
-      'plugin:react-hooks/recommended',
-    ),
-  ),
-
-  {
-    plugins: {
-      react: reactPlugin,
-      import: fixupPluginRules(importPlugin),
-      'react-refresh': reactRefreshPlugin,
-    },
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -101,40 +67,83 @@ const config = [
       ],
     },
     rules: {
-      'react-refresh/only-export-components': [
+      '@typescript-eslint/consistent-type-imports': [
         'warn',
-        {
-          allowConstantExport: true,
-        },
+        { prefer: 'type-imports' },
       ],
-      'react/prop-types': 0,
-
-      'import/no-unresolved': 0, // Handled by TypeScript compiler
-      'import/order': [
-        'warn',
-        {
-          pathGroups: [
-            {
-              pattern: '@/**',
-              group: 'external',
-              position: 'after',
-            },
-          ],
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-          'newlines-between': 'always',
-        },
-      ],
-      'import/newline-after-import': 1,
-      'import/no-anonymous-default-export': 1,
     },
   },
+)
+
+const reactRefreshConfig = {
+  plugins: {
+    'react-refresh': reactRefreshPlugin,
+  },
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      {
+        allowConstantExport: true,
+      },
+    ],
+  },
+}
+
+const reactPluginConfig = {
+  plugins: {
+    react: reactPlugin,
+  },
+  rules: {
+    'react/jsx-uses-react': 'off',
+    'react/jsx-uses-vars': 'off',
+  },
+}
+
+const importPluginConfig = {
+  plugins: {
+    import: fixupPluginRules(importPlugin),
+  },
+
+  rules: {
+    'import/no-unresolved': 0, // Handled by TypeScript compiler
+    'import/order': [
+      'warn',
+      {
+        pathGroups: [
+          {
+            pattern: '@/**',
+            group: 'external',
+            position: 'after',
+          },
+        ],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+        'newlines-between': 'always',
+      },
+    ],
+    'import/newline-after-import': 1,
+    'import/no-anonymous-default-export': 1,
+  },
+}
+
+/** @type { import('eslint').Linter.FlatConfig} */
+const config = [
+  ...tsEslintConfig,
+  prettierPlugin,
+  reactPluginConfig,
+  reactPlugin.configs.flat['jsx-runtime'],
+  reactRefreshConfig,
+  promisePlugin.configs['flat/recommended'],
+  jsxA11yConfig,
+  importPluginConfig,
+  // Uncompatible with flat configs
+  ...fixupConfigRules(compat.extends('plugin:react-hooks/recommended')),
 ]
 
 export default config

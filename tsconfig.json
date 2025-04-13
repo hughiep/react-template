@@ -9,7 +9,6 @@
       "@/auth": ["./src/modules/auth/index"],
       "@/wallet": ["./src/modules/wallet/index"]
     },
-    "rootDirs": [".", "./.react-router/types"],
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
