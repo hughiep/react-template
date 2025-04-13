@@ -19,7 +19,7 @@ let isRefreshing = false
 /**
  * When access token is refreshing by refresh token, queue 401 axios requests
  */
-let lockedRequestsQueued: {
+let failedRequestsQueue: {
   request: any
   resolve: (value: any) => void
   reject: (reason?: unknown) => void
@@ -28,16 +28,17 @@ let lockedRequestsQueued: {
 /**
  * After refreshing, resolve or reject requests in queue if there is error or not
  */
-const processQueue = () => {
-  lockedRequestsQueued.forEach((prom) => {
-    if (prom.request._retry) {
-      prom.reject(new Error('Token refresh failed'))
+const processQueue = (newAccessToken?: string, error?: unknown) => {
+  failedRequestsQueue.forEach((prom) => {
+    if (prom.request._retry && error) {
+      prom.reject(error)
     } else {
+      prom.request.headers.Authorization = `Bearer ${newAccessToken}`
       prom.resolve(axiosClient(prom.request))
     }
   })
 
-  lockedRequestsQueued = []
+  failedRequestsQueue = []
 }
 
 export const axiosClient = axios.create({
@@ -68,14 +69,17 @@ axiosClient.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config
-    const refreshToken = getRefreshToken()
 
     if (
-      refreshToken &&
       !originalRequest?._retry &&
       originalRequest?.url !== REFRESH_TOKEN_API &&
       error.response?.status === UNAUTHORIZED_STATUS_CODE
     ) {
+      const refreshToken = getRefreshToken()
+      if (!refreshToken) {
+        return Promise.reject(error)
+      }
+
       if (!isRefreshing) {
         isRefreshing = true
 
@@ -85,18 +89,18 @@ axiosClient.interceptors.response.use(
           setRefreshToken(tokenData.refreshToken)
 
           isRefreshing = false
-          processQueue()
+          processQueue(tokenData.accessToken)
           return await axiosClient(originalRequest)
-        } catch (error) {
+        } catch {
           isRefreshing = false
-          processQueue()
-          return Promise.reject(error)
+          failedRequestsQueue.length = 0
+          window.location.href = '/login'
         }
       } else {
         originalRequest._retry = true
 
         return new Promise((resolve, reject) =>
-          lockedRequestsQueued.push({
+          failedRequestsQueue.push({
             request: originalRequest,
             resolve,
             reject,

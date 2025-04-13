@@ -1,0 +1,9 @@
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: .docker/Dockerfile
+    container_name: app
+    ports:
+    - "3000:80" # map port 80 in container (nginx) to 3000 in host machine

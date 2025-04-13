@@ -21,7 +21,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
-        '@/assets': path.resolve(__dirname, './src/assets'),
+        config: path.resolve(__dirname, './src/modules/config/index'),
+        assets: path.resolve(__dirname, './src/assets'),
         '@/shared': path.resolve(__dirname, './src/modules/shared'),
         '@/auth': path.resolve(__dirname, './src/modules/auth'),
         '@/wallet': path.resolve(__dirname, './src/modules/wallet'),

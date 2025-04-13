@@ -10,7 +10,7 @@
 ### Setup environment variables
 
 ```bash
-cp .env.template .env
+cp .env.development .env
 ```
 
 Update value for each key in `.env` file.
@@ -18,7 +18,7 @@ Update value for each key in `.env` file.
 ### Install dependencies
 
 ```bash
-pnpm install --frozen-lockfile
+pnpm install
 ```
 
 Run the development server:
