@@ -11,3 +11,8 @@ export const setAccessToken = (accessToken: string) =>
 
 export const setRefreshToken = (refreshToken: string) =>
   window.localStorage.set(storageKeys.auth.refreshToken, refreshToken)
+
+export const removeTokens = () => {
+  window.localStorage.removeItem(storageKeys.auth.acessToken)
+  window.localStorage.removeItem(storageKeys.auth.refreshToken)
+}

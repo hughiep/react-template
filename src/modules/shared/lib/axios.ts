@@ -4,6 +4,7 @@ import axios from 'axios'
 import {
   getAccessToken,
   getRefreshToken,
+  removeTokens,
   setAccessToken,
   setRefreshToken,
 } from '../../auth/helpers/storage'
@@ -92,6 +93,7 @@ axiosClient.interceptors.response.use(
           processQueue(tokenData.accessToken)
           return await axiosClient(originalRequest)
         } catch {
+          removeTokens()
           isRefreshing = false
           failedRequestsQueue.length = 0
           window.location.href = '/login'
