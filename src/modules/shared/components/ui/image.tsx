@@ -4,8 +4,7 @@
  */
 
 import { useState, useEffect } from 'react'
-
-import { cn } from '@/shared/utilities/classnames'
+import clsx from 'clsx'
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   fallback?: string
@@ -35,14 +34,7 @@ function AppImage({
   }, [src, fallback])
 
   if (!isLoading && showLoadingFallback) {
-    return (
-      <div
-        className={cn(
-          'h-full w-full animate-pulse bg-slate-200',
-          props.className,
-        )}
-      />
-    )
+    return <div className={clsx('', props.className)} />
   }
 
   return <img src={internalSrc} {...props} alt={props.alt ?? ''} />
