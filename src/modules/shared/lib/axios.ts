@@ -8,6 +8,7 @@ import {
   setAccessToken,
   setRefreshToken,
 } from '../../auth/helpers/storage'
+import { APIError, ErrorCode } from '../types/error'
 
 const UNAUTHORIZED_STATUS_CODE = 401
 const REFRESH_TOKEN_API = '/refresh-token'
@@ -74,6 +75,18 @@ axiosClient.interceptors.response.use(
       _retry?: boolean
     }
 
+    if (!error.response) {
+      return Promise.reject(
+        new APIError('Network error', ErrorCode.NETWORK_ERROR, error),
+      )
+    }
+
+    if (error.code === 'ECONNABORTED') {
+      return Promise.reject(
+        new APIError('Request timeout', ErrorCode.NETWORK_ERROR, error),
+      )
+    }
+
     if (
       !originalRequest?._retry &&
       originalRequest?.url !== REFRESH_TOKEN_API &&
@@ -114,7 +127,9 @@ axiosClient.interceptors.response.use(
       }
     }
 
-    return Promise.reject(error)
+    return Promise.reject(
+      new APIError(error.message, error.code ?? 'UNKNOWN_ERROR', error),
+    )
   },
 )
 

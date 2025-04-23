@@ -12,16 +12,24 @@ class APIError extends Error {
 }
 
 const handleError = (error: Error) => {
-  if (error instanceof APIError) {
-    console.error(`Unhandled API Error:`, error)
+  if (process.env.NODE_ENV === 'development') {
+    if (error instanceof APIError) {
+      console.error(`Unhandled API Error:`, error)
+    } else {
+      console.error(`Unhandled Application Error:`, error)
+    }
   } else {
-    console.error(`Unhandled Application Error:`, error)
+    console.error(`Unexpected Application Error Occurred`)
   }
 }
 
 window.onerror = (_message, _source, _lineno, _colno, error) => {
   if (error) handleError(error)
   return false
+}
+
+export const ErrorCode = {
+  NETWORK_ERROR: 'NETWORK_ERROR',
 }
 
 export { APIError, handleError }
