@@ -17,7 +17,6 @@ export default function ErrorBoundary() {
           <div>
             <h2>{error.status}</h2>
             <p>{error.statusText}</p>
-            {error.data?.message && <p>{error.data.message}</p>}
           </div>
         ) : (
           <div>

@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getMeQuery } from '@/auth/services'
 import SvgIcon from '@/shared/components/ui/svg-icon'
+
+import { getMeQuery } from '../services'
 
 export default function Login() {
   const { data: me } = useQuery(getMeQuery())

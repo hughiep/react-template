@@ -1,7 +1,11 @@
 {
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
   // Use the project's typescript version
   "typescript.tsdk": "node_modules/typescript/lib",
-
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
   // Use prettier to format typescript, javascript and JSON files
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -11,13 +15,5 @@
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
-  // Format on save
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "typescript.preferences.preferTypeOnlyAutoImports": true,
-  "typescript.preferences.importModuleSpecifier": "non-relative"
+  }
 }

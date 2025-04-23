@@ -7,7 +7,9 @@
 
 import type { RouteObject } from 'react-router-dom'
 
-import { authPaths } from '@/auth/router/paths'
+export const authPaths = {
+  login: '/login',
+}
 
 export const authRoutes: RouteObject[] = [
   {

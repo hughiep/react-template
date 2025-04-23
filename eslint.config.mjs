@@ -47,8 +47,11 @@ const jsxA11yConfig = {
  * Typescript eslint
  */
 const tsEslintConfig = tsEslint.config(
+  {
+    ignores: ['eslint.config.mjs'],
+  },
   eslint.configs.recommended,
-  tsEslint.configs.recommended,
+  tsEslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
       globals: {
@@ -56,6 +59,10 @@ const tsEslintConfig = tsEslint.config(
         ...globals.node,
       },
       parser: tsParser,
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
     settings: {
       react: {
@@ -65,6 +72,9 @@ const tsEslintConfig = tsEslint.config(
         'node_modules',
         '\\.(json|css|svg|png|jpe?g|gif|webp)$',
       ],
+      'import/resolver': {
+        typescript: {},
+      },
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': [
@@ -134,6 +144,7 @@ const importPluginConfig = {
 
 /** @type { import('eslint').Linter.FlatConfig} */
 const config = [
+  { ignores: ['node_modules', 'dist'] },
   ...tsEslintConfig,
   prettierPlugin,
   reactPluginConfig,

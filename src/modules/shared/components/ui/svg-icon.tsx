@@ -1,4 +1,5 @@
 import type React from 'react'
+
 import * as icons from 'assets/icons'
 
 type SVGIconName = keyof typeof icons
@@ -12,9 +13,7 @@ interface Props extends React.SVGProps<SVGElement> {
 export default function SvgIcon(props: Props) {
   const { name, size, width = 24, height = 24, ...rest } = props
 
-  const Comp = icons[name as SVGIconName] as React.FC<
-    React.SVGProps<SVGElement>
-  >
+  const Comp = icons[name] as React.FC<React.SVGProps<SVGElement>>
 
   return (
     <Comp

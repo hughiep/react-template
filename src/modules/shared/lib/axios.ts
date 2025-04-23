@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios from 'axios'
+import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios'
 
 import {
   getAccessToken,
@@ -21,7 +21,7 @@ let isRefreshing = false
  * When access token is refreshing by refresh token, queue 401 axios requests
  */
 let failedRequestsQueue: {
-  request: any
+  request: InternalAxiosRequestConfig & { _retry?: boolean }
   resolve: (value: any) => void
   reject: (reason?: unknown) => void
 }[] = []
@@ -59,17 +59,20 @@ axiosClient.interceptors.request.use(
 
     return config
   },
-  (error) => {
+  (error: Error) => {
     return Promise.reject(error)
   },
 )
 
 axiosClient.interceptors.response.use(
   (response) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return response.data
   },
-  async (error) => {
-    const originalRequest = error.config
+  async (error: AxiosError) => {
+    const originalRequest = error.config as InternalAxiosRequestConfig & {
+      _retry?: boolean
+    }
 
     if (
       !originalRequest?._retry &&

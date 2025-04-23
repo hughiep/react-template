@@ -5,7 +5,7 @@ import { getAccessToken } from '../../auth/helpers/storage'
 
 export class Wss {
   private static instance: Wss
-  private events: Record<string, any> = {}
+  private events: Record<string, (...args: any[]) => void> = {}
   private socket: Socket
 
   private constructor() {
@@ -46,11 +46,15 @@ export class Wss {
     }
   }
 
-  public emit(event: string, ...args: any[]) {
+  public emit(event: string, ...args: unknown[]): void {
     this.socket.emit(event, ...args)
   }
 
-  public off(event: string, callback: any, opts: { id?: string } = {}) {
+  public off(
+    event: string,
+    callback: (...args: any[]) => void,
+    opts: { id?: string } = {},
+  ) {
     if (opts.id && this.events[opts.id]) {
       this.socket.off(event, this.events[opts.id])
       delete this.events[opts.id]
@@ -59,7 +63,11 @@ export class Wss {
     if (!opts.id) this.socket.off(event, callback)
   }
 
-  public on(event: string, callback: any, opts: { id?: string } = {}) {
+  public on(
+    event: string,
+    callback: (...args: any[]) => void,
+    opts: { id?: string } = {},
+  ) {
     if (opts.id && !this.events[opts.id]) {
       this.events[opts.id] = callback
       this.socket.on(event, callback)

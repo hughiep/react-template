@@ -25,7 +25,6 @@ export default defineConfig(({ mode }) => {
         assets: path.resolve(__dirname, './src/assets'),
         '@/shared': path.resolve(__dirname, './src/modules/shared'),
         '@/auth': path.resolve(__dirname, './src/modules/auth'),
-        '@/wallet': path.resolve(__dirname, './src/modules/wallet'),
       },
     },
   }
