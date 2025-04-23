@@ -33,9 +33,7 @@
     "react-top-loading-bar": "^3.0.2",
     "socket.io-client": "^4.8.1",
     "tailwind-merge": "^3.2.0",
-    "tailwindcss-animate": "^1.0.7",
-    "viem": "~2.26.3",
-    "wagmi": "^2.14.16"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.8",
@@ -49,6 +47,7 @@
     "@typescript-eslint/parser": "^8.29.1",
     "@vitejs/plugin-react-swc": "^3.8.1",
     "autoprefixer": "^10.4.21",
+    "babel-plugin-react-compiler": "19.1.0-rc.1",
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-import-resolver-typescript": "^4.3.4",
@@ -57,7 +56,7 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "6.0.0-rc1",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "prettier": "^3.5.3",
