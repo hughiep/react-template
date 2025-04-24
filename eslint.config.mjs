@@ -1,9 +1,5 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
 import eslint from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat'
+import { fixupPluginRules } from '@eslint/compat'
 import globals from 'globals'
 /**
  * Plugins
@@ -11,6 +7,7 @@ import globals from 'globals'
 import tsParser from '@typescript-eslint/parser'
 import tsEslint from 'typescript-eslint'
 import reactPlugin from 'eslint-plugin-react'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import reactRefreshPlugin from 'eslint-plugin-react-refresh'
 import importPlugin from 'eslint-plugin-import'
 import prettierPlugin from 'eslint-plugin-prettier/recommended'
@@ -21,12 +18,6 @@ import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
  * Inspect ESLint configuration.
  * Command: `npx @eslint/config-inspector@latest`
  */
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
 
 /**
  * JSX A11y config
@@ -153,8 +144,7 @@ const config = [
   promisePlugin.configs['flat/recommended'],
   jsxA11yConfig,
   importPluginConfig,
-  // Uncompatible with flat configs
-  ...fixupConfigRules(compat.extends('plugin:react-hooks/recommended')),
+  reactHooksPlugin.configs['recommended-latest'],
 ]
 
 export default config
