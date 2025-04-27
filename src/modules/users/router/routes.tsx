@@ -4,8 +4,8 @@
 
 import type { RouteObject } from 'react-router'
 
-import CreateUser from '~/modules/users/create/CreateUser'
-import ListUser from '~/modules/users/list/ListUser'
+import CreateUser from '~/modules/users/create/create-user'
+import ListUser from '~/modules/users/list/user-list'
 
 export const usersRoutes: RouteObject[] = [
   {
