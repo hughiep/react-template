@@ -9,7 +9,7 @@ export class Wss {
   private socket: Socket
 
   private constructor() {
-    this.socket = io(import.meta.env.VITE_SOCKET_URL, {
+    this.socket = io('', {
       auth: {
         token: getAccessToken(),
       },

@@ -1,3 +1,7 @@
+/**
+ * Inspect ESLint configuration.
+ * Command: `npx @eslint/config-inspector@latest`
+ */
 import eslint from '@eslint/js'
 import { fixupPluginRules } from '@eslint/compat'
 import globals from 'globals'
@@ -15,12 +19,7 @@ import promisePlugin from 'eslint-plugin-promise'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
 
 /**
- * Inspect ESLint configuration.
- * Command: `npx @eslint/config-inspector@latest`
- */
-
-/**
- * JSX A11y config
+ * JSX A11y config - Accessibility rules for JSX elements.
  */
 const jsxA11yConfig = {
   files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
@@ -100,6 +99,10 @@ const reactPluginConfig = {
   },
 }
 
+/**
+ * Import plugin configuration
+ * - Enforces best practices for module imports.
+ */
 const importPluginConfig = {
   plugins: {
     import: fixupPluginRules(importPlugin),
