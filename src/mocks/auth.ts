@@ -31,12 +31,12 @@ export const jwtMockRefresh = async () => {
  * JWT get me mock promise
  */
 
-export const getMe = async () => {
+export const getMe = async (): Promise<{ id: number; email: string }> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         id: 1,
-        email: '',
+        email: 'user@example.com',
       })
     }, 1000)
   })

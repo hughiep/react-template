@@ -8,7 +8,7 @@ import {
   setAccessToken,
   setRefreshToken,
 } from '../../auth/helpers/storage'
-import { APIError, ErrorCode } from '../types/error'
+import { APIError, ErrorCode } from '../services/errors'
 
 const UNAUTHORIZED_STATUS_CODE = 401
 const REFRESH_TOKEN_API = '/refresh-token'
@@ -107,6 +107,8 @@ axiosClient.interceptors.response.use(
 
           isRefreshing = false
           processQueue(tokenData.accessToken)
+
+          originalRequest.headers.Authorization = `Bearer ${tokenData.accessToken}`
           return await axiosClient(originalRequest)
         } catch {
           removeTokens()
