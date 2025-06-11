@@ -8,6 +8,7 @@ import globals from 'globals'
 /**
  * Plugins
  */
+import reactCompiler from 'eslint-plugin-react-compiler'
 import tsParser from '@typescript-eslint/parser'
 import tsEslint from 'typescript-eslint'
 import reactPlugin from 'eslint-plugin-react'
@@ -17,6 +18,7 @@ import importPlugin from 'eslint-plugin-import'
 import prettierPlugin from 'eslint-plugin-prettier/recommended'
 import promisePlugin from 'eslint-plugin-promise'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 
 /**
  * JSX A11y config - Accessibility rules for JSX elements.
@@ -142,12 +144,14 @@ const config = [
   ...tsEslintConfig,
   prettierPlugin,
   reactPluginConfig,
+  reactCompiler.configs.recommended,
   reactPlugin.configs.flat['jsx-runtime'],
   reactRefreshConfig,
   promisePlugin.configs['flat/recommended'],
   jsxA11yConfig,
   importPluginConfig,
   reactHooksPlugin.configs['recommended-latest'],
+  ...pluginQuery.configs['flat/recommended'],
 ]
 
 export default config
