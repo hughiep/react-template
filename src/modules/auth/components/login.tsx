@@ -10,7 +10,7 @@ export default function Login() {
   return (
     <div>
       <SvgIcon name="react" />
-      <h1 className="font-bold">Login Page</h1>
+      <h1>Login Page</h1>
       <p>Me: {JSON.stringify(me)}</p>
     </div>
   )
