@@ -7,6 +7,7 @@ import { moduleRoutes } from './routes'
 import PrivateRoute from './private-route'
 import NotFoundPage from './not-found'
 import ErrorBoundary from './error'
+import FallbackElement from './fallback'
 
 export const Router = () => {
   const appRoutes: RouteObject[] = [
@@ -14,6 +15,7 @@ export const Router = () => {
       path: '/',
       element: <RootLayout />,
       errorElement: <ErrorBoundary />,
+      HydrateFallback: FallbackElement,
       children: [
         {
           path: '/',
