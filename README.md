@@ -1,4 +1,4 @@
-# Vite React Web3 Template
+# Simple and Minimalism React template
 
 ## Development
 
