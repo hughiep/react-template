@@ -7,6 +7,8 @@
 
 import type { RouteObject } from 'react-router-dom'
 
+import FallbackElement from '~/router/fallback'
+
 export const authPaths = {
   login: '/login',
 }
@@ -14,6 +16,7 @@ export const authPaths = {
 export const authRoutes: RouteObject[] = [
   {
     path: authPaths.login,
+    HydrateFallback: FallbackElement,
     lazy: () =>
       import('./page').then((module) => ({ Component: module.default })),
   },
