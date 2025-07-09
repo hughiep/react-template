@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
 const reactCompilerConfig = {
-  /* ... */
+  target: '19',
 }
 
 // https://vitejs.dev/config/
@@ -30,9 +30,7 @@ export default defineConfig(({ mode }) => {
     // assetsInclude: ['./src/assets/icons/**/*'],
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src'),
-        config: path.resolve(__dirname, './src/modules/config/index'),
-        assets: path.resolve(__dirname, './src/assets'),
+        '@/config': path.resolve(__dirname, './src/modules/config/index'),
         '@/shared': path.resolve(__dirname, './src/modules/shared'),
         '@/auth': path.resolve(__dirname, './src/modules/auth'),
       },

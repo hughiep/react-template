@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"],
-      "config": ["./src/config/index"],
-      "assets/*": ["./src/assets/*"],
+      "@/config": ["./src/config/index"],
       "@/shared/*": ["./src/modules/shared/*"],
       "@/auth": ["./src/modules/auth/index"],
       "@/wallet": ["./src/modules/wallet/index"]

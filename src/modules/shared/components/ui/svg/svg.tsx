@@ -1,6 +1,6 @@
 import type React from 'react'
 
-import * as icons from 'assets/icons'
+import * as icons from './icons'
 
 type SVGIconName = keyof typeof icons
 
