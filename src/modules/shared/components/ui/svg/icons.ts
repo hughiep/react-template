@@ -5,5 +5,4 @@
  * increasing the bundle size. Users have to download more js.
  * If it is not necessary to use them as React components, use as URLs instead.
  */
-export { default as react } from './svg/react.svg?react'
-export { default as vite } from './svg/vite.svg?react'
+export { default as react } from '@/assets/svgc/react.svg?react'

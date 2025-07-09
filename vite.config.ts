@@ -24,13 +24,11 @@ export default defineConfig(({ mode }) => {
     server: {
       port: env.PORT ? parseInt(env.PORT) : 3003,
     },
-    // https://vite.dev/config/shared-options.html#assetsinclude
-    // WARNING: They will be excluded from the plugin transform pipeline
-    // Avoid putting svgr export inside those folders
-    // assetsInclude: ['./src/assets/icons/**/*'],
     resolve: {
       alias: {
         '@/config': path.resolve(__dirname, './src/modules/config/index'),
+        '@/assets': path.resolve(__dirname, './src/assets'),
+        '@/router': path.resolve(__dirname, './src/router'),
         '@/shared': path.resolve(__dirname, './src/modules/shared'),
         '@/auth': path.resolve(__dirname, './src/modules/auth'),
       },

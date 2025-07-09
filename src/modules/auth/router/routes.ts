@@ -7,7 +7,7 @@
 
 import type { RouteObject } from 'react-router-dom'
 
-import FallbackElement from '~/router/fallback'
+import FallbackElement from '@/router/fallback'
 
 export const authPaths = {
   login: '/login',

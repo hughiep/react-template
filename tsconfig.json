@@ -3,9 +3,10 @@
     "baseUrl": ".",
     "paths": {
       "@/config": ["./src/config/index"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/router/*": ["./src/router/*"],
       "@/shared/*": ["./src/modules/shared/*"],
-      "@/auth": ["./src/modules/auth/index"],
-      "@/wallet": ["./src/modules/wallet/index"]
+      "@/auth": ["./src/modules/auth/index"]
     },
     "target": "ES2020",
     "useDefineForClassFields": true,

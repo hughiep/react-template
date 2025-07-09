@@ -5,3 +5,4 @@
  */
 
 export { authRoutes } from './router/routes'
+export { getMeQuery } from './services'

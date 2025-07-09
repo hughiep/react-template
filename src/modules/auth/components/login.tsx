@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import SvgIcon from '@/shared/components/ui/svg-icon'
+import SvgIcon from '@/shared/components/ui/svg'
 
 import { getMeQuery } from '../services'
 
