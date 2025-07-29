@@ -2,23 +2,23 @@
  * Inspect ESLint configuration.
  * Command: `npx @eslint/config-inspector@latest`
  */
-import eslint from '@eslint/js'
 import { fixupPluginRules } from '@eslint/compat'
+import eslint from '@eslint/js'
 import globals from 'globals'
 /**
  * Plugins
  */
-import reactCompiler from 'eslint-plugin-react-compiler'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 import tsParser from '@typescript-eslint/parser'
-import tsEslint from 'typescript-eslint'
-import reactPlugin from 'eslint-plugin-react'
-import reactHooksPlugin from 'eslint-plugin-react-hooks'
-import reactRefreshPlugin from 'eslint-plugin-react-refresh'
 import importPlugin from 'eslint-plugin-import'
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
 import prettierPlugin from 'eslint-plugin-prettier/recommended'
 import promisePlugin from 'eslint-plugin-promise'
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
-import pluginQuery from '@tanstack/eslint-plugin-query'
+import reactPlugin from 'eslint-plugin-react'
+import reactCompiler from 'eslint-plugin-react-compiler'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import reactRefreshPlugin from 'eslint-plugin-react-refresh'
+import tsEslint from 'typescript-eslint'
 
 /**
  * JSX A11y config - Accessibility rules for JSX elements.
@@ -73,6 +73,9 @@ const tsEslintConfig = tsEslint.config(
         'warn',
         { prefer: 'type-imports' },
       ],
+      '@typescript-eslint/no-empty-object-type': {
+        allowInterfaces: true,
+      },
     },
   },
 )

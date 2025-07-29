@@ -5,11 +5,17 @@ description: This file contains the technology stack used in this React project.
 
 # React Template Technology Stack
 
-1. React 19
-2. React Router 7
-3. React Query 5
-4. TypeScript 5
-5. Ant Design 6
-6. Zustand 4 (if needed)
-7. SCSS 8 (if needed)
-8. React Hook Form 8 (if needed)
+- React 19
+- React Router 7
+- React Query 5
+- TypeScript 5
+- Ant Design 6
+- Zustand 4 (not required)
+- SCSS 8 (not required)
+- React Hook Form 8 (not required)
+
+## Additional Libraries
+
+- Axios for HTTP requests
+- SVGR for SVG imports
+- react-number-format for numberic input
