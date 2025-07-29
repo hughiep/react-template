@@ -1,6 +1,10 @@
 // See http://go.microsoft.com/fwlink/?LinkId=827846
 // for the documentation about the extensions.json format
 
+// List of extensions to be recommended for this workspace
+// Extensions can be installed by clicking on the lightbulb icon in the bottom right corner
+// or by using the command palette (Ctrl+Shift+P) and selecting "Extensions: Install Recommended Extensions"
+// or by using the command palette (Ctrl+Shift+P) and selecting "Extensions: Show Recommended Extensions"
 {
   "recommendations": [
     "editorconfig.editorconfig",

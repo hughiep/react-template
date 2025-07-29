@@ -1,8 +1,11 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.sortImports": "explicit"
   },
+  // To instruct VS Code to automatically use the copilot-instructions.md file for every chat request.
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   // Use the project's typescript version
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.preferences.preferTypeOnlyAutoImports": true,
