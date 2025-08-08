@@ -1,19 +1,19 @@
 name: CI
-run-name: Lint the PR of ${{ github.actor }}
+run-name: Validate PR from ${{ github.actor }}
 
 on:
   pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
+    types: [opened, edited, synchronize, reopened]
+
+env:
+  NODE_VERSION: 22
+  PNPM_VERSION: 10
 
 jobs:
-  lint:
-    name: Linting
-    runs-on: ubuntu-latest # Replace with self-hosted runner if needed
-    timeout-minutes: 10
+  quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
@@ -22,22 +22,38 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: ${{ env.PNPM_VERSION }}
           run_install: false
 
-      # Has to be done after installing pnpm, otherwise the cache will not work.
-      - name: Set node version to 22
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: ${{ env.NODE_VERSION }}
           cache: "pnpm"
           cache-dependency-path: "pnpm-lock.yaml"
 
+      # Cache TypeScript build info and ESLint cache for faster subsequent runs
+      - name: Cache TypeScript and ESLint
+        uses: actions/cache@v4
+        with:
+          path: |
+            .eslintcache
+            tsconfig.tsbuildinfo
+          key: ts-eslint-cache-${{ runner.os }}-${{ hashFiles('**/*.ts', '**/*.tsx', 'tsconfig.json', 'eslint.config.mjs') }}
+          restore-keys: |
+            ts-eslint-cache-${{ runner.os }}-
+
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Run lint
-        run: pnpm run lint
-
+      # Run type checking first as it's often the fastest way to catch issues
       - name: Type checking
         run: pnpm run typecheck
+
+      # Run linting with cache
+      - name: Run lint
+        run: pnpm run lint --cache --cache-location .eslintcache
+
+      # Verify the build works
+      - name: Build application
+        run: pnpm run build
