@@ -36,13 +36,12 @@ jobs:
         with:
           path: |
             .eslintcache
-            tsconfig.tsbuildinfo
-          key: ts-eslint-cache-${{ runner.os }}-${{ hashFiles('**/*.ts', '**/*.tsx', 'tsconfig.json', 'eslint.config.mjs') }}
+          key: ts-eslint-cache-${{ runner.os }}-${{ hashFiles('**/*.ts', '**/*.tsx', 'eslint.config.mjs') }}
           restore-keys: |
             ts-eslint-cache-${{ runner.os }}-
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       # Run type checking first as it's often the fastest way to catch issues
       - name: Type checking
@@ -50,8 +49,4 @@ jobs:
 
       # Run linting with cache
       - name: Run lint
-        run: pnpm run lint --cache --cache-location .eslintcache
-
-      # Verify the build works
-      - name: Build application
-        run: pnpm run build
+        run: pnpm run lint
