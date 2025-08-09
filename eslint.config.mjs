@@ -73,9 +73,12 @@ const tsEslintConfig = tsEslint.config(
         'warn',
         { prefer: 'type-imports' },
       ],
-      '@typescript-eslint/no-empty-object-type': {
-        allowInterfaces: true,
-      },
+      '@typescript-eslint/no-empty-object-type': [
+        'warn',
+        {
+          allowInterfaces: 'with-single-extends',
+        },
+      ],
     },
   },
 )

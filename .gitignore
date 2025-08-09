@@ -26,3 +26,8 @@ dist-ssr
 
 # React router
 .react-router
+
+# Cache files
+.eslintcache
+tsconfig.tsbuildinfo
+*.tsbuildinfo

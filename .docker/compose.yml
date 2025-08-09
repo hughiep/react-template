@@ -1,3 +1,6 @@
+# If name is not specified, the image name will be derived from the directory name. Which can lead to conflicts.
+name: my-app
+
 services:
   app:
     image: app # Custom image name
