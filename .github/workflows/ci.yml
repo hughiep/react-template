@@ -28,7 +28,9 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-        # Cache pnpm store (fast restore)
+        # Cache pnpm store
+        # Even we can cache node_modules, pnpm's store is more efficient for self hosted runners
+        # For github hosted runners, caching node_modules is still useful as caching will be stored in github cache server
       - name: Get pnpm store directory
         id: pnpm-cache-dir
         run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
@@ -52,7 +54,7 @@ jobs:
             ts-eslint-cache-${{ runner.os }}-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --prefer-offline
 
       # Run type checking first as it's often the fastest way to catch issues
       - name: Type checking
