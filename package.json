@@ -12,7 +12,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --cache --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --cache --cache-strategy content --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
     "typecheck": "tsc --noEmit"
