@@ -4,7 +4,7 @@
 
 ### Evidence (screenshot/video, if appropriate)
 
-### Make sure the following is done before review:
+### Make sure the following is done before review
 
 - [ ] Git
 
@@ -13,6 +13,10 @@
 
 - [ ] Coding
 
-  - File and folder's name is kebab-case
-  - Following the coding standards and best practices
-  - Utilities functions and constants are documented
+  - Files and folders' names are kebab-case
+  - Following the clean code principles and best practices.
+    - No magic numbers
+    - No hard-coded strings
+    - No commented code
+  - Keep everything small and readable
+  - Utility functions and constants are documented
