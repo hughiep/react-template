@@ -1,4 +1,4 @@
-# Simple and Minimalism React template
+# Simple and Minimal React template
 
 ## Development
 
@@ -13,7 +13,7 @@
 cp .env.development .env
 ```
 
-Update value for each key in `.env` file.
+Update all environment variables in `.env` file.
 
 ### Install dependencies
 
@@ -33,24 +33,24 @@ Open `localhost:[PORT]`, (`PORT` was set in `.env` file or default by `3001`) wi
 
 ### Production build
 
-Run command to build project for production
+Run the following command to build the project for production:
 
 ```bash
 pnpm run build
 ```
 
-Serve production build folder `dist` as static content.
+Serve the production build folder `dist` as static content.
 
-### Production by Docker with Nginx
+### Deploy with Docker and Nginx
 
-Build docker image
+Build the docker image
 
 ```bash
-docker build -t vite-react-web3-template .
+docker build -t react-template -f .docker/Dockerfile .
 ```
 
-Run docker container
+Run the docker container
 
 ```bash
-docker run -p [PORT]:80 vite-react-web3-template
+docker run -p [PORT]:80 react-template
 ```
